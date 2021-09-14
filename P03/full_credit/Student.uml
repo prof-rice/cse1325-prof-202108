@@ -1,0 +1,19 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide circle
+
+class Student {
+-studentName   : String
+-examSum : double
+-examNumGrades : double
++Student(name : String)
++getName()  : String
++addExam(grade : double)
++average()  : double
+}
+class Grades {
++ main(args : String[]) : int
+}
+Grades -right- Student
+
+@enduml
