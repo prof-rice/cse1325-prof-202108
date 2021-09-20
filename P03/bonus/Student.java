@@ -3,15 +3,14 @@ public class Student {
         this.studentName = name;
     }
     public String getName() {
-        return studentName;
+        return "~" + studentName;
     }
     public void addExam(double grade) {
         examSum += grade;
         ++examNumGrades;
     }
     public double average() {
-        if(examNumGrades == 0) return 100;
-        return examSum / examNumGrades;
+        return (2*examSum) / examNumGrades;
     }
     
     private String studentName;

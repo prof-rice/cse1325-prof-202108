@@ -10,6 +10,7 @@ public class Student {
         ++examNumGrades;
     }
     public double average() {
+        if(examNumGrades == 0) return 100;
         return examSum / examNumGrades;
     }
     
