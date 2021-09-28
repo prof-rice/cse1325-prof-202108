@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project name="Shopping Cart" default="build">
+  <presetdef name="javac">
+    <javac includeantruntime="false" />
+  </presetdef>
+
+  <target name="build" description="Compile source tree java files">
+    <javac debug="true" failonerror="true">
+      <src path="."/>
+    </javac>
+  </target>
+  
+  <target name="clean" description="Clean output files">
+    <delete>
+      <fileset dir=".">
+        <include name="**/*.class"/>
+      </fileset>
+    </delete>
+  </target>
+
+  <javadoc packagenames="cart.*"
+           sourcepath="."
+           defaultexcludes="yes"
+           destdir="docs/api"
+           author="true"
+           version="true"
+           use="true"
+           windowtitle="Complex API">
+    <doctitle><![CDATA[<h1>Shopping Cart</h1>]]></doctitle>
+    <bottom><![CDATA[<i>Copyright &#169; 2021 Professor George F. Rice.</i>]]></bottom>
+    <tag name="license.agreement" scope="all" description="Licensed under:"/>
+  </javadoc>
+</project>
