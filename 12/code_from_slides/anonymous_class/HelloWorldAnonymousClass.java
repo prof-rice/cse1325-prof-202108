@@ -1,10 +1,10 @@
-interface HelloWorld {
+interface HelloWorldA {
     public void greetSomeone(String someone);
 }
 
 public class HelloWorldAnonymousClass {
     public void sayHello() {
-        HelloWorld englishGreeting = new HelloWorld() {
+        HelloWorldA englishGreeting = new HelloWorldA() {
             String name = "world";
             public void greetSomeone(String someone) {
                 name = someone;
