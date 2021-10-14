@@ -26,7 +26,7 @@ public class MessageDialog extends JFrame {
 		button.addActionListener(
 		    event -> JOptionPane.showMessageDialog(
 		        this,    // This is the main window object (if none, use null)
-		        "Ouch!", // This is the message to display
+		        "Ouch!" // This is the message to display
 		    )
 		);
 		

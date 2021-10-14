@@ -1,4 +1,6 @@
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
 
 public class HelloInteractive extends JFrame {
     public HelloInteractive() {
