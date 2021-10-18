@@ -136,7 +136,7 @@ public class AllWidgets extends JFrame {
         // For better control, provide a model as parameter:
         //   SpinnerNumberModel int or double parameters are initial value, min, max, and step
         //   SpinnerList Model accepts an Object[] or List parameter and spins through its elements
-        SpinnerModel range = new SpinnerNumberModel(0, 0, 1000, 1);
+        SpinnerModel range = new SpinnerNumberModel(0, 0, 1000, 1); // initial value, range (low,high), step
         spinner = new JSpinner(range);
         spinner.addChangeListener(
             event -> {
