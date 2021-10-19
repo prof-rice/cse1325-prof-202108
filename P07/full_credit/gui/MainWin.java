@@ -35,12 +35,9 @@ import store.Darkness;
 import store.Shot;
 
 public class MainWin extends JFrame {
-    // Thrown if the Cancel button on a dialog is clicked
-    protected class CancelDialogException extends Exception {
-        public CancelDialogException() {
-            super("Dialog canceled");
-        }
-    }
+
+    // ///////////////////////////////////////////////////////////////////
+    // Constructors
 
     public MainWin(String title) {
         super(title);
@@ -125,7 +122,8 @@ public class MainWin extends JFrame {
         setVisible(true);
     }
     
-    // Listeners
+    // ///////////////////////////////////////////////////////////////////
+    // Action Listeners
     
     protected void onCreateJavaClick() {  // Create a new Java product
         try {
@@ -218,15 +216,17 @@ public class MainWin extends JFrame {
         about.pack();
         about.setVisible(true);
      }
-    protected void onQuitClick() {System.exit(0);}   // Exit the game
+    protected void onQuitClick() {dispose();}  
 
-    public static void main(String[] args) {
-        MainWin myApp = new MainWin("JADE");
-        myApp.setVisible(true);
-    }
-
+    // ///////////////////////////////////////////////////////////////////
     // Utilities
     
+    // Thrown if the Cancel button on a dialog is clicked
+    protected class CancelDialogException extends Exception {
+        public CancelDialogException() {
+            super("Dialog canceled");
+        }
+    }
     private String getString(String prompt) throws CancelDialogException {
         String newPrompt = prompt;
         while(true) {
@@ -279,7 +279,17 @@ public class MainWin extends JFrame {
                               + "</html>");
     }
 
+    // ///////////////////////////////////////////////////////////////////
+    // Main
+
+    public static void main(String[] args) {
+        MainWin myApp = new MainWin("JADE");
+        myApp.setVisible(true);
+    }
     
+    // ///////////////////////////////////////////////////////////////////
+    // Attributes
+
     private Store store;
     
     private JLabel data;                    // Display of output in main window
