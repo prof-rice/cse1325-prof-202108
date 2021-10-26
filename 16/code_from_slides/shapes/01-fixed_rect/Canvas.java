@@ -15,7 +15,8 @@ public class Canvas extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);       
+        super.paintComponent(g);   
+        System.out.print('.');    
 
         // Draw Rectangle
         g.drawRect(25,20,200,150);
