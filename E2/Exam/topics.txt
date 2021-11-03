@@ -1,0 +1,6 @@
+Identify widgets?
+reversi - main window, lambda, input dialog, label manipulation, exiting
+ttt - anonymous classes, Graphics
+textreader - ADD JFileChooser, file input, try with resources, JComboBox dialog, HTML
+
+
