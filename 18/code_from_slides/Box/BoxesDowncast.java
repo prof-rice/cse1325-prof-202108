@@ -13,7 +13,7 @@ public class BoxesDowncast {
             try {
                 TriBox tb = (TriBox) box;
                 System.out.println("Downcast " + tb);
-            } catch(Exception e) {
+            } catch(ClassCastException e) {
                 System.err.println("Failed to downcast " + box + ": " + e.getMessage());
             }
         }
