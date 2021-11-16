@@ -1,0 +1,135 @@
+Full Credit
+===========
+
+Number of cores available to my test environment (in bash use ``nproc`` command):
+Primes range for my machine (between 20 and 30 second runtime without threads): 
+
+Without threads:
+
+real	
+user	
+sys	
+
+
+With 2 threads:
+
+real	
+user	
+sys	
+
+
+With 3 threads:
+
+real	
+user	
+sys	
+
+
+With 4 threads:
+
+real	
+user	
+sys	
+
+
+With 5 threads:
+
+real	
+user	
+sys	
+
+
+With 6 threads:
+
+real	
+user	
+sys	
+
+
+With 7 threads:
+
+real	
+user	
+sys	
+
+
+With 8 threads:
+
+real	
+user	
+sys	
+
+
+With 16 threads:
+
+real	
+user	
+sys	
+
+
+With 32 threads:
+
+real	
+user	
+sys	
+
+
+With 64 threads:
+
+real	
+user	
+sys	
+
+
+QUESTION: After threading is added to threads.cpp, is the order of prime numbers found in primes_threads.txt the same or different than in primes.txt?  Why?
+
+
+
+
+QUESTION: Does adding more threads continue to speed up the program? Do more threads ever slow down the program slightly?  Why or why not?
+
+
+
+
+QUESTION: Does adding more threads increase the "system load", or is it constant regardless of the number of threads?  Why?
+
+
+
+Bonus
+=====
+
+After "load balancing" your code as discussed in the PDF, rerun the test with the same number of threads as your test environment has cores. For example, on a 4-core machine, run your code with 4 threads and record the time below.
+
+Number of cores: 
+
+Load Balanced
+-------------
+
+real	
+user	
+sys	
+
+NOT Load Balanced
+-----------------
+
+Copy the time for this number of cores from the Full Credit section:
+
+real	
+user	
+sys	
+
+QUESTION: What difference does a load balanced thread pool make in execution time?
+
+
+
+
+Extreme Bonus
+=============
+
+List the optimizations you applied to reduce the time needed to identify prime numbers.
+
+* Optimization 1: 
+* Optimization 2: 
+* Optimization 3: 
+
+Add additional bullet points as needed.
