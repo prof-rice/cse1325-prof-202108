@@ -7,27 +7,14 @@ public class Primes {
         primes = new ArrayList<>();
     }
     public Primes findPrimes(int lower, int upper) {
+        slice = (upper - lower) / 100;
+        nextLower = lower - slice;
+        final int finalUpper = upper;
         Thread[] threads = new Thread[numThreads];
-        int slice = (upper - lower) / numThreads;
-        for(int i=0; i<numThreads; ++i) {
-            final int thisLower = lower;
-            final int thisUpper = (i < (numThreads-1)) ? (lower + slice -1) : upper;
-            
+        for(int i=0; i<numThreads; ++i) {          
             final int thread = i;
-            threads[i] = new Thread(() -> addPrimes(thisLower, thisUpper, thread));
+            threads[i] = new Thread(() -> addPrimes(finalUpper, thread));
             threads[i].start();
-            
-            /* OR, using an anonymous class
-            Runnable runnable = new Runnable() {
-                public void run() {
-                    addPrimes(thisLower, thisUpper);
-                }
-            };
-            threads[i] = new Thread(runnable);
-            threads[i].start();
-            */
-
-            lower = thisUpper + 1;
         }
         for(Thread thread : threads) {
             try {
@@ -38,13 +25,16 @@ public class Primes {
         }
         return this;    
     }
-    protected void addPrimes(int lower, int upper, int thread) {
-        String format = "Thread %02d searching %10d to %10d\n";
-        System.err.printf(format, thread, lower, upper);
-        //System.err.println("Thread " + thread + " searching " + lower + "-" + upper);
-        for(int i=lower; i<=upper; ++i) {
-            if(isPrime(i)) {
-                addPrime(i);
+    protected void addPrimes(int upper, int thread) {
+        while(true) {
+            int lowerRange = getRange();
+            if (lowerRange >= upper) break;
+            int upperRange = Math.min(lowerRange + slice -1, upper);
+            String format = "Thread %02d searching %10d to %10d\n";
+            System.err.printf(format, thread, lowerRange, upperRange);
+            for(int i=lowerRange; i<=upperRange; ++i) {
+                if(isPrime(i)) 
+                    addPrime(i);
             }
         }
     }
@@ -58,16 +48,22 @@ public class Primes {
     public synchronized void addPrime(int prime) {
         primes.add(prime);
     }
+    public synchronized int getRange() {
+        nextLower += slice;
+        return nextLower;
+    }
     public int numberOfPrimes() {return primes.size();}
     public Integer[] toArray() {return primes.toArray(new Integer[primes.size()]);}
     
+    private int nextLower;
+    private int slice;
     private int numThreads;
     private ArrayList<Integer> primes;
     
     public static void main(String[] args) {
         int numThreads = 1;
         int lower = 0;
-        int upper = 3000000; // defaults
+        int upper = 30000000; // defaults
         if(args.length > 0) numThreads = Integer.parseInt(args[0]);
         if(args.length > 1) lower = Integer.parseInt(args[1]);
         if(args.length > 2) upper = Integer.parseInt(args[2]);
